@@ -1,5 +1,17 @@
 version: '3'
 services: 
+    client: 
+        build: 
+            context: ./front
+        ports: 
+            - '3001:3000'
+        environment: 
+            - API_URL=http://localhost:8081/timelog
+        depends_on: 
+            - api
+        volumes:
+            - ./front:/app/
+            - /app/node_modules
     api: 
         build: 
             context: ./api
