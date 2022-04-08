@@ -1,9 +1,8 @@
 FROM node:14-alpine
-WORKDIR /front
+WORKDIR /app
 ENV CHOKIDAR_USEPOLLING=true
-COPY package*.json /front/
-COPY yarn.lock /front/
-RUN yarn install --frozen-lockfile
-COPY . /front
+COPY package*.json /app/
+RUN ["npm", "install"]
+COPY . /app
 EXPOSE 3000
 ENTRYPOINT ["npm", "start"]
